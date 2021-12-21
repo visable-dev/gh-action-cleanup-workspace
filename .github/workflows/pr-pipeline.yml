@@ -18,7 +18,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: "${{ steps.extract_ref.outputs.ref }}"
+      - uses: ./test/action
       - uses: ./
+        with:
+          directory: ./foo/
       - shell: sh
         run: echo "Hello World"
       - name: show file system
