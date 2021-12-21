@@ -11,11 +11,14 @@ jobs:
     container:
       image: alpine:3.15
     steps:
-      - uses: ./
       - name: Define proper Checkout REF
         shell: sh
         run: echo "##[set-output name=ref;]$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF}})"
         id: extract_ref
+      - uses: actions/checkout@v2
+        with:
+          ref: "${{ steps.extract_ref.outputs.ref }}"      
+      - uses: ./
       - uses: actions/checkout@v2
         with:
           ref: "${{ steps.extract_ref.outputs.ref }}"
