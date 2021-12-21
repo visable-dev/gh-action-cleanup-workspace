@@ -5,7 +5,7 @@ try {
 
   async function cleanup() {
 
-    exec(`ls -la && find . -mindepth 1 -delete && ls -la`, (error, stdout, stderr) => {
+    exec(`ls -la && echo 'Start clean up ...' && find . -mindepth 1 -delete && 'Finished' && ls -la`, (error, stdout, stderr) => {
       if (error) {
           console.log(`error: ${error.message}`);
           core.setFailed(error.message)
