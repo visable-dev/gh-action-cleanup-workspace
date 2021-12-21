@@ -1,7 +1,0 @@
-name: "Test Action"
-description: "This is a helper action to test the gh-action-cleanup-workspace action behavior."
-runs:
-  using: "docker"
-  image: "Dockerfile"
-  entrypoint: "/noop.sh"
-  post-entrypoint: "/check.sh"
