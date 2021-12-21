@@ -1,0 +1,12 @@
+name: "Cleanup Workspace"
+description: "This action will remove all files and directories from the given directory (Default: ./)."
+inputs:
+  directory:
+    description: "The content of this directory will be deleted"
+    required: false
+    default: "./"
+runs:
+  using: "node16"
+  pre: "src/cleanup.js"
+  main: "src/noop.js"
+  post: "src/cleanup.js"

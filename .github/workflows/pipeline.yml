@@ -1,0 +1,23 @@
+name: Main PR Pipeline
+
+on:
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  test:
+    runs-on: self-hosted
+    container:
+      image: alpine:v3.15
+    steps:
+        shell: sh
+        run: echo "Hello World"
+      - name: show file system
+        shell: sh
+        run: ls -la
+      - uses: actions/checkout@v2
+      - name: show file system
+        shell: sh
+        run: ls -la action
+      - uses: ./action
