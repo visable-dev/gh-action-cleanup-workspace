@@ -1,0 +1,6 @@
+name: "Cleanup Workspace"
+description: "This action will remove all files and directories from the root working directory."
+runs:
+  using: "node16"
+  main: "src/cleanup.js"
+  post: "src/cleanup.js"
