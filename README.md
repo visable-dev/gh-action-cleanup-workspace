@@ -1,5 +1,5 @@
 # Cleanup GitHub Workspace Action
-This GitHub action will clean up the runner workspace to avoid dirty filesystem issues on the self-hosted runners.
+This GitHub action will clean up the runner workspace via a post command to avoid dirty filesystem issues on the self-hosted runners.
 
 Open GitHub issues:
 - https://github.com/actions/runner/issues/691

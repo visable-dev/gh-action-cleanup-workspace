@@ -7,6 +7,5 @@ inputs:
     default: "./"
 runs:
   using: "node16"
-  pre: "src/cleanup.js"
   main: "src/noop.js"
   post: "src/cleanup.js"
