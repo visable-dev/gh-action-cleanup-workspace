@@ -6,7 +6,7 @@ Open GitHub issues:
 - https://github.com/actions/checkout/issues/211
 
 ## Example Usage
-This GitHub action should be defined before the `actions/checkout` and the `actions/cache` to clean up the workspace.
+This GitHub action must be defined before the `actions/checkout` and the `actions/cache` to clean up the workspace.
 
 ```yaml
 name: Pull Request Pipeline
