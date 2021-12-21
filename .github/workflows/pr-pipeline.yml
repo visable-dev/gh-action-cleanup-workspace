@@ -19,5 +19,3 @@ jobs:
         with:
           ref: "${{ steps.extract_ref.outputs.ref }}"
       - uses: ./
-        with:
-          directory: ./foo/

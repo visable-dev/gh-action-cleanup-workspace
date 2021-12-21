@@ -4,9 +4,8 @@ try {
   const { exec } = require("child_process");
 
   async function cleanup() {
-    const directory = core.getInput('directory');
 
-    exec(`find ${directory} -mindepth 1 -delete`, (error, stdout, stderr) => {
+    exec(`find . -mindepth 1 -delete`, (error, stdout, stderr) => {
       if (error) {
           console.log(`error: ${error.message}`);
           core.setFailed(error.message)
