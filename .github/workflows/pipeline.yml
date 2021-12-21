@@ -12,7 +12,7 @@ jobs:
       image: alpine:3.15
     steps:
       - name: Define proper Checkout REF
-        shell: bash
+        shell: sh
         run: echo "##[set-output name=ref;]$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF}})"
         id: extract_ref
       - uses: actions/checkout@v2
