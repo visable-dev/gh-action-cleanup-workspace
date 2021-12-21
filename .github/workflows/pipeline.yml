@@ -11,13 +11,19 @@ jobs:
     container:
       image: alpine:3.15
     steps:
+      - name: Define proper Checkout REF
+        shell: bash
+        run: echo "##[set-output name=ref;]$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF}})"
+        id: extract_ref
+      - uses: actions/checkout@v2
+        with:
+          ref: "${{ steps.extract_ref.outputs.ref }}"
+      - uses: ./
       - shell: sh
         run: echo "Hello World"
       - name: show file system
         shell: sh
         run: ls -la
-      - uses: actions/checkout@v2
       - name: show file system
         shell: sh
-        run: ls -la action
-      - uses: ./action
+        run: ls -la
