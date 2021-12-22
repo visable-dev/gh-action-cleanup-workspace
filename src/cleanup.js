@@ -1,25 +1,10 @@
-const core = require('@actions/core');
+import core from '@actions/core';
+import fs from 'fs';
 
 try {
-  const { exec } = require("child_process");
-
-  async function cleanup() {
-
-    exec(`ls -la && echo 'Start clean up ...' && find . -mindepth 1 -delete && echo 'Finished' && ls -la`, (error, stdout, stderr) => {
-      if (error) {
-          console.log(`error: ${error.message}`);
-          core.setFailed(error.message)
-          return;
-      }
-      if (stderr) {
-          console.log(`stderr: ${stderr}`);
-          return;
-      }
-      console.log(`stdout: ${stdout}`);
-    });
-  }
-    
-  cleanup();
-} catch (error) {
+  fs.readdirSync('.').forEach(file => {
+    fs.rmSync(file, { force: true, recursive: true })
+  });
+} catch(error) {
   core.setFailed(error.message);
 }
