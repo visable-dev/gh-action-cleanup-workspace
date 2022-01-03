@@ -2,12 +2,12 @@ name: Main PR Pipeline
 
 on:
   pull_request:
-    branches: 
+    branches:
       - main
 
 jobs:
   test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container:
       image: alpine:3.15
     steps:
@@ -17,8 +17,17 @@ jobs:
         id: extract_ref
       - uses: actions/checkout@v2
         with:
-          ref: "${{ steps.extract_ref.outputs.ref }}"      
-      - uses: ./
+          ref: "${{ steps.extract_ref.outputs.ref }}"
+      - name: Test local action
+        uses: ./
+      - run: |
+          if [ -z "$(ls -A .)" ]; then
+            exit 0
+          else
+            echo "Folder is not empty"
+            ls -A .
+            exit 1
+          fi
       - uses: actions/checkout@v2
         with:
           ref: "${{ steps.extract_ref.outputs.ref }}"
