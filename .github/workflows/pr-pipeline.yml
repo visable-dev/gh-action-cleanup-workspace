@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Define proper Checkout REF
         shell: sh
-        run: echo "##[set-output name=ref;]$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF}})"
+        run: echo "ref=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF}})" >> $GITHUB_OUTPUT
         id: extract_ref
       - uses: actions/checkout@v2
         with:
